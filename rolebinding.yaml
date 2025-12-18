@@ -1,13 +1,13 @@
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
-  name: pod-reader-binding
-  namespace: default
+  name: myexample-rb
+  namespace: mynamespace
 subjects:
 - kind: ServiceAccount
-  name: my-sa
-  namespace: default
+  name: myexample-sa
+  namespace: mynamespace
 roleRef:
   kind: Role
-  name: pod-reader
+  name: myexample-role
   apiGroup: rbac.authorization.k8s.io
