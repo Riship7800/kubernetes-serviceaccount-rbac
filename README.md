@@ -1,31 +1,28 @@
-# Kubernetes Service Account – Automated kubectl Access
+# Kubernetes Service Account Based KUBECONFIG
 
-## Project Overview
-This project demonstrates how to use Kubernetes Service Accounts with RBAC
-to enable secure, automated kubectl access without using human user credentials.
+## Description
+This project demonstrates how to securely access the Kubernetes API
+from external scripts using a ServiceAccount-based KUBECONFIG file.
 
-This setup is commonly used in CI/CD pipelines and automation tools.
-
-## Technologies Used
-- Kubernetes (Minikube)
-- kubectl
-- RBAC (Role, RoleBinding)
-- Service Accounts
+## Features
+- No user login required
+- Least privilege RBAC
+- Suitable for automation & CI/CD
+- Secure external API access
 
 ## Steps Implemented
-1. Created a Kubernetes ServiceAccount
-2. Defined Role with limited pod read permissions
-3. Bound Role to ServiceAccount using RoleBinding
-4. Generated ServiceAccount token
-5. Verified access using token-based kubectl authentication
+1. Namespace creation
+2. Service Account setup
+3. Role & RoleBinding
+4. Token extraction
+5. Custom KUBECONFIG creation
+6. Access verification
 
-## Commands Used
+## Tools Used
+- Kubernetes
+- kubectl
+- RBAC
+- YAML
 
-Create ServiceAccount:
-```bash
-kubectl create serviceaccount my-sa
-kubectl create token my-sa
-kubectl config set-credentials sa-user --token=<TOKEN>
-kubectl config set-context sa-context --cluster=minikube --user=sa-user
-kubectl config use-context sa-context
-kubectl get pods --token=<TOKEN>
+## Use Case
+Used for automation scripts, CI/CD pipelines, and external applications.
