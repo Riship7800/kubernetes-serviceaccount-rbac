@@ -24,3 +24,8 @@ This setup is commonly used in CI/CD pipelines and automation tools.
 Create ServiceAccount:
 ```bash
 kubectl create serviceaccount my-sa
+kubectl create token my-sa
+kubectl config set-credentials sa-user --token=<TOKEN>
+kubectl config set-context sa-context --cluster=minikube --user=sa-user
+kubectl config use-context sa-context
+kubectl get pods --token=<TOKEN>
